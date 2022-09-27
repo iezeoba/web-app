@@ -1,0 +1,14 @@
+node(''){
+def mavenHome = tool name: "maven_3.8.6"
+stage('1.initiation'){
+sh "echo start of web-app application"
+}
+stage('2.Gitclone'){
+sh "echo Start of Gitclone"
+git credentialsId: 'GithubPassword', url: 'https://github.com/iezeoba/web-app.git'
+}
+stage('3.Build'){
+sh "echo Start of Build"
+sh "${mavenHome}/bin/mvn package"
+}
+}
